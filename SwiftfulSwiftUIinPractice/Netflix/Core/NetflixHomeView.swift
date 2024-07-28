@@ -49,7 +49,7 @@ struct NetflixHomeView: View {
             heroProduct = products.first
             
             var rows: [ProductRow] = []
-            let allBrands = Set(products.map({ $0.brand }))
+            let allBrands = Set(products.map({ $0._brand }))
             for brand in allBrands {
 //                let products = self.products.filter({ $0.brand == brand })
                 rows.append(ProductRow(title: brand.capitalized, products: products.shuffled()))
@@ -148,7 +148,7 @@ struct NetflixHomeView: View {
             imageName: product.firstImage,
             isNetflixFilm: true,
             title: product.title,
-            categories: [product.category.capitalized, product.brand],
+            categories: [product.category.capitalized, product._brand],
             onBackgroundPressed: {
                 onProductPressed(product: product)
             },

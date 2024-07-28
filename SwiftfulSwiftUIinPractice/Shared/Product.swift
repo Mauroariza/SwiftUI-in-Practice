@@ -15,15 +15,20 @@ struct ProductArray: Codable {
 struct Product: Codable, Identifiable {
     let id: Int
     let title, description: String
-    let price: Int
+    let price: Double // Double not Int
     let discountPercentage, rating: Double
     let stock: Int
-    let brand, category: String
+    let brand: String? // <- Optional
+    let category: String
     let thumbnail: String
     let images: [String]
     
     var firstImage: String {
         images.first ?? Constants.randomImage
+    }
+    
+    var _brand: String {
+        brand ?? ""
     }
     
     let recentlyAdded: Bool = {
