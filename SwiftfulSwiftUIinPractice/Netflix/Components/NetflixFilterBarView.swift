@@ -1,24 +1,4 @@
-//
-//  NetflixFilterBarView.swift
-//  SwiftfulSwiftUIinPractice
-//
-//  Created by Nick Sarno on 2/17/24.
-//
-
 import SwiftUI
-
-struct FilterModel: Hashable, Equatable {
-    let title: String
-    let isDropdown: Bool
-    
-    static var mockArray: [FilterModel] {
-        [
-            FilterModel(title: "TV Shows", isDropdown: false),
-            FilterModel(title: "Movies", isDropdown: false),
-            FilterModel(title: "Categories", isDropdown: true),
-        ]
-    }
-}
 
 struct NetflixFilterBarView: View {
     
@@ -51,7 +31,8 @@ struct NetflixFilterBarView: View {
                         NetflixFilterCell(
                             title: filter.title,
                             isDropdown: filter.isDropdown,
-                            isSelected: selectedFilter == filter
+                            isSelected: selectedFilter == filter,
+                            options: ["Action", "Comedy", "Drama"] // Replace with actual options from API
                         )
                         .background(Color.black.opacity(0.001))
                         .onTapGesture {
